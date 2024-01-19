@@ -390,9 +390,14 @@ function tracker.ButtonEvent(self)
         end
 
         if objNum and objNeeded then
-          local r,g,b = pfMap.tooltip:GetColor(objNum, objNeeded)
-          self.objectives[i]:SetTextColor(r+.2, g+.2, b+.2)
-          self.objectives[i]:SetText(string.format("|cffffffff- %s:|r %s/%s", obj, objNum, objNeeded))
+          local r, g, b = pfMap.tooltip:GetColor(objNum, objNeeded)
+          if done then
+            self.objectives[i]:SetTextColor(.5, .5, .5)
+            self.objectives[i]:SetText(string.format("|cffaaaaaa- %s:|r %s/%s", obj, objNum, objNeeded))
+          else
+            self.objectives[i]:SetTextColor(r + 0.2, g + 0.2, b + 0.2)
+            self.objectives[i]:SetText(string.format("|cffffffff- %s:|r %s/%s", obj, objNum, objNeeded))
+          end
         else
           self.objectives[i]:SetTextColor(.8,.8,.8)
           self.objectives[i]:SetText("|cffffffff- " .. text)
